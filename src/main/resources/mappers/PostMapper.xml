@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.mapper.PostMapper">
+
+	<insert id="insertPost" parameterType="com.example.model.Post" useGeneratedKeys="true" keyProperty="id">
+    INSERT INTO post (title, content, created_at, author_id)
+    VALUES (#{title}, #{content}, #{createdAt}, #{authorId})
+	</insert>
+	
+	<select id="findAll" resultType="com.example.model.Post">
+	    SELECT * FROM post ORDER BY created_at DESC
+	</select>
+		
+	<select id="findPostsByPage" resultType="com.example.model.Post">
+	    SELECT
+	        p.id,
+	        p.title,
+	        m.username,
+	        p.created_at
+	    FROM post p
+	    JOIN member m ON p.author_id = m.id
+	    ORDER BY p.created_at DESC
+	    LIMIT #{limit} OFFSET #{offset}
+	</select>
+	
+	<select id="countPosts" resultType="int">
+	    SELECT COUNT(*) FROM post
+	</select>
+
+</mapper>
