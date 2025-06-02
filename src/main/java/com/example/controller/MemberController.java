@@ -44,7 +44,7 @@ public class MemberController {
             @PathVariable String id,
             @Valid @RequestBody UpdateMemberDTO dto) {
         memberService.updateMember(id, dto);
-        return ResponseEntity.noContent().build(); // 204 No Content
+        return ResponseEntity.noContent().build(); 
     }
 }
 

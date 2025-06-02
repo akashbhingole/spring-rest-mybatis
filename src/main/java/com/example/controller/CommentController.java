@@ -30,7 +30,7 @@ public class CommentController {
     public ResponseEntity<Void> createComment(
         @PathVariable Long postId,
         @RequestBody @Valid CommentRequestDTO request,
-        @RequestHeader("X-User-Id") Long userId // assuming user ID comes from header
+        @RequestHeader("X-User-Id") Long userId 
     ) {
         commentService.createComment(postId, userId, request);
         return ResponseEntity.status(HttpStatus.CREATED).build();

@@ -27,7 +27,7 @@ public class PostServiceImpl implements PostService {
         Post post = new Post();
         post.setTitle(dto.getTitle());
         post.setContent(dto.getContent());
-        post.setAuthorId(dto.getAuthorId()); // From DTO or Auth Context
+        post.setAuthorId(dto.getAuthorId()); 
         post.setCreatedAt(Instant.now().toString());
 
         postDao.insertPost(post);

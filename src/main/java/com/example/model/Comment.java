@@ -6,8 +6,7 @@ public class Comment {
     private Long authorId;
     private String content;
     private String createdAt;
-    private String username; // for view
-    // Getters and Setters
+    private String username; 
 	public Long getId() {
 		return id;
 	}

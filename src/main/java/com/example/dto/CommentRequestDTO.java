@@ -7,7 +7,6 @@ public class CommentRequestDTO {
     @NotBlank
     @Size(min = 1, max = 500)
     private String content;
-    // Getters and Setters
 
 	public String getContent() {
 		return content;

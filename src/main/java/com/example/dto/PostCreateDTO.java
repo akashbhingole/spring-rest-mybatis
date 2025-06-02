@@ -13,7 +13,6 @@ public class PostCreateDTO {
     @Size(min = 1, max = 1000, message = "Content must be 1–1000 characters.")
     private String content;
 
-    // Optionally include user ID (e.g., if not extracted from auth token)
     private String authorId;
 
 	public String getTitle() {

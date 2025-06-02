@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.mapper.LoginRankingMapper">
+
+	<select id="getWeeklyLoginRankings" resultType="com.example.dto.LoginRankingDTO">
+	    SELECT 
+	        m.username,
+	        COUNT(*) AS loginCount
+	    FROM login_record lr
+	    JOIN member m ON lr.user_id = m.id
+	    WHERE lr.login_time BETWEEN #{start} AND #{end}
+	    GROUP BY lr.user_id
+	    ORDER BY loginCount DESC
+	    LIMIT #{limit}
+	</select>
+
+		
+
+</mapper>
