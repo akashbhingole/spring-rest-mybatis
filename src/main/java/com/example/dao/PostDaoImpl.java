@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.mapper.PostMapper;
 import com.example.model.Post;
+import com.example.model.PostDetail;
 
 @Repository
 public class PostDaoImpl implements PostDao {
@@ -36,5 +37,10 @@ public class PostDaoImpl implements PostDao {
     public int countPosts() {
         return postMapper.countPosts();
     }
+	
+	public PostDetail getPostDetail(Long id) {
+		return postMapper.findPostById(id);
+	}
+	
     
 }

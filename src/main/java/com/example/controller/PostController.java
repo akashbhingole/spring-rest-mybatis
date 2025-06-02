@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.dto.PostCreateDTO;
 import com.example.model.PagedPosts;
 import com.example.model.Post;
+import com.example.model.PostDetail;
 import com.example.service.PostService;
 
 @RestController
@@ -41,6 +43,12 @@ public class PostController {
     public ResponseEntity<PagedPosts> getPagedPosts(@RequestParam(defaultValue = "1") int page) {
         PagedPosts pagedPosts = postService.getPostsByPage(page);
         return ResponseEntity.ok(pagedPosts);
+    }
+    
+    @GetMapping("/{id}")
+    public ResponseEntity<PostDetail> getPostDetail(@PathVariable Long id) {
+        PostDetail detail = postService.getPostDetail(id);
+        return ResponseEntity.ok(detail);
     }
 }
 
